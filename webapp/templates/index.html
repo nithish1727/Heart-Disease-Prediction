@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Heart Doctor
+{% endblock %}		
+
+{% block content %}
+	<div class="form-container">
+	    <form action="" method="POST" >
+	    	<table class= "form-style-1">
+		       <tr>
+			        <td>
+			          <label>Age <span class="required">*</span></label>
+			        
+			          <input type="text" name="Age" class="field-divided" />	      
+			        </td>
+			        <td>
+			            <label>Sex</label>
+			            <select name="Sex" class="field-select">
+				            <option value="1">Male</option>
+				            <option value="0">Female</option>
+			            </select>
+			        </td>
+		        </tr>
+
+		        <tr>
+			        <td>
+			            <label>Chest Pain</label>
+			            <select name="ChestPain" class="field-select">
+				            <option value="0">Typical Angina</option>
+				            <option value="1">Atypical Angina</option>
+				            <option value="2">Non-Anginal Pain  </option>
+				            <option value="3">Asymptomatic</option>
+			            </select>
+			        </td>
+			        <td>
+			            <label>Resting BP (mm/Hg) <span class="required">*</span></label>
+			            <input type="text" name="RestingBP" class="field-divided" />
+			        </td>
+		        </tr>
+
+		        <tr>
+			        <td>
+			            <label>Cholesterol(mg/dl)<span class="required">*</span></label>
+			            <input type="text" name="Cholesterol" class="field-divided" />
+			        </td>
+			        <td>
+			            <label>Fasting Blood sugar</label>
+			            <select name="FBS" class="field-select">
+				            <option value="1">&#62 120 mg/dl</option>
+				            <option value="0">&#60 120 mg/dl </option>
+			            </select>
+			        </td>
+		        </tr>
+
+				<tr>		        
+			        <td>
+			            <label>Resting ECG </label>
+			            <select name="RESTECG" class="field-select">
+				            <option value="0">Normal</option>
+				            <option value="1">ST-T wave abnormality </option>
+				            <option value="2">Left ventricular hypertrophy</option>
+			                       
+			            </select>
+			        </td>
+			        <td>
+			            <label>Max Heart Rate<span class="required">*</span></label>
+			            <input type="text" name="MaxHR" class="field-divided" />
+			            
+			        </td>
+		        </tr>
+				<tr>
+			        <td>
+			            <label>Exercise Angina</label>
+			            <select name="ExAngina" class="field-select">
+				            <option value="1">Yes</option>
+				            <option value="0">No</option>
+			            </select>
+			        </td>		        
+		        <td>
+		            <label>Old peak<span class="required">*</span></label>
+		            <input type="text" name="OldPeak" class="field-divided" placeholder="st depression"/>
+		            
+		        </td>
+		        </tr>
+				<tr>		           
+		        <td>
+		            <label>ST Slope</label>>
+		            <select name="STSlope" class="field-select">
+			            <option value="0">Upsloping</option>
+			            <option value="1">Flat </option>
+			            <option value="2">Downsloping</option>           
+		            </select>
+		        </td>
+		        </tr>
+
+
+	        </table>
+	        <!-- <br> -->
+	       	<input type="submit" value="submit" id="submit-btn">
+			<!-- <button type="submit" value ="submit"  >
+		          Submit
+		    </button>  -->
+    	</form>
+	</div> 
+	
+
+	{% if packet['errors'] %}
+    	<div id="error-box">
+	    	<ul>
+				{% for error in packet['errors'] %}
+					<h3> {{error}} </h3>				
+				{% endfor %}
+			<ul>
+		</div>
+
+	{% elif packet['predict'] %}
+		 <div class="predict">
+			<h2>
+			 	{{packet['predict']}}
+			</h2>
+		</div>	
+	{% endif %}
+
+{% endblock %}

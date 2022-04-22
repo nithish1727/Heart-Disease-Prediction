@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{{url_for('static',filename='imgs/cardiogram-small.png')}}">
+
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+
+	<title>     
+		{% block title %}
+        {% endblock %}
+ 	</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+</head>
+<body>
+	<nav>
+
+		<div class=container>
+			<!-- <img src="{{url_for('static',filename='imgs/heartcare.png')}}" width="50px"> -->
+			<img src="{{url_for('static',filename='imgs/cardiogram-small.png')}}" width="40">
+			<!-- <a href='https://pngtree.com/so/heart'>heart png from pngtree.com/</a> -->
+			<h1>{{packet['website-name']}}</h1>
+			<div class="menu">
+				{% for navItem in packet["nav-items"] %}
+				    {% if navItem == packet['current-page'] %}
+						<a href={{navItem}} class="is-active" >{{navItem}}</a>
+					{% else %}
+						<a href={{navItem}} class="" >{{navItem}}</a>
+					{% endif %}
+				{% endfor %}		
+			</div>
+
+		</div>
+	</nav>
+
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+	About
+{% endblock %}		
+
+{% block content %}
+
+	<div id="About-div">
+
+		{% for contact in packet['contacts'] %}
+			<div class="contact-card">
+				<h4  class="contact-name">{{ contact['name'] }}</h4>
+				<br>	
+				<h4  class="contact-name">{{ contact['id'] }}</h4>
+				<br>
+				<a class="contact-btn" href="mailto: {{ contact['email'] }}" target="_newtab">Contact</a>
+			</div>
+		{% endfor %}
+	</div>
+	<h1 id="thanks">Thanks to Jabez Christopher sir for his guidance.</h1>
+
+{% endblock %}
